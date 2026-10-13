@@ -1,0 +1,36 @@
+# Local tooling, data and logs (portable JDK/Node/PostgreSQL used during development)
+.devtools/
+*.log
+
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+*.pem
+
+# Backend build output
+backend/target/
+e2e/target/
+
+# Frontend
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/coverage/
+frontend/*.tsbuildinfo
+frontend/next-env.d.ts
+
+# IDE / OS
+.idea/
+*.iml
+.DS_Store
+Thumbs.db
+
+# Reports that may contain personal data
+**/surefire-reports/
+**/failsafe-reports/
+**/e2e-failures/
+
+# Python / Office temp files
+__pycache__/
+~$*
