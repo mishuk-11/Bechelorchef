@@ -1,0 +1,49 @@
+@import "tailwindcss";
+
+/* Bachelor Chef design tokens: warm neutral canvas, chili accent, herb green for success. */
+@theme {
+  --color-canvas: #faf6ef;
+  --color-surface: #ffffff;
+  --color-sunken: #f3ede3;
+  --color-line: #e5dccd;
+  --color-ink: #1f2421;
+  --color-muted: #5b625d;
+  --color-brand: #b93d10;
+  --color-brand-strong: #8f2e0b;
+  --color-brand-soft: #fbe7dc;
+  --color-herb: #2f6f4e;
+  --color-herb-soft: #e3f1e8;
+  --color-saffron: #c98510;
+  --color-saffron-soft: #fdf1d8;
+  --color-danger: #b42318;
+  --color-danger-soft: #fdecea;
+  --color-info-soft: #e8eef9;
+  --font-sans: var(--font-geist-sans), var(--font-bengali), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+}
+
+html {
+  color-scheme: light;
+}
+
+body {
+  background: var(--color-canvas);
+  color: var(--color-ink);
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-brand);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+dialog::backdrop {
+  background: rgb(31 36 33 / 0.45);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
