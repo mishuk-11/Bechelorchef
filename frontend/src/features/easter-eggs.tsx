@@ -68,16 +68,11 @@ export function EasterEggs() {
   );
 }
 
-/** 🏍️ faces right on Windows/Android emoji fonts and left on Apple's, so mirror it unless on an Apple device. */
-const facesRightByDefault = () => !/Mac|iPhone|iPad|iPod/i.test(navigator.userAgent);
-
+/** The 🏍️ emoji faces left, the way it rides; the 💨 trails behind it on the right. */
 function Bike() {
-  const [mirror] = useState(facesRightByDefault);
   return (
     <div className="egg-bike absolute top-[58%] flex items-end gap-1 text-6xl sm:text-7xl">
-      <span className="inline-block" style={mirror ? { transform: "scaleX(-1)" } : undefined}>
-        <span className="egg-bike-rider inline-block">🏍️</span>
-      </span>
+      <span className="egg-bike-rider inline-block">🏍️</span>
       <span className="inline-block text-3xl opacity-70">💨</span>
     </div>
   );
