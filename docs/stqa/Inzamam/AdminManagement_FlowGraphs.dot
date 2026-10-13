@@ -1,0 +1,72 @@
+digraph G {
+graph [fontname="Arial" fontsize=12 labelloc=t newrank=true nodesep=0.35 ranksep=0.35
+label="Control-flow graphs: AdminManagementController (owner Inzamam), 5 functions under basis path test"];
+node [fontname="Arial" fontsize=10 width=1.6];
+edge [fontname="Arial" fontsize=10];
+subgraph cluster_0 { style="rounded" color="#7F7F7F" fontsize=12 label="ingredients  (lines 53-59)\nV(G) = P + 1 = 2   E - N + 2 = 6 - 6 + 2 = 2";
+  f0_1 [label="1: receive query, category,\nsort, page, size\n(line 53-57)" shape=box style="rounded,filled" fillcolor="#DDEBF7"];
+  f0_2 [label="2: size == null ?\n(line 58)" shape=diamond style=filled fillcolor="#FFF2CC"];
+  f0_3 [label="3: sizeArg = null\n(line 58)" shape=box style=filled fillcolor="#DDEBF7"];
+  f0_4 [label="4: sizeArg = size - 1\n(line 58)" shape=box style=filled fillcolor="#DDEBF7"];
+  f0_5 [label="5: return\ncatalog.searchIngredients(query,\nnull, true, sort, page,\nsizeArg)\n(line 58)" shape=box style="rounded,filled" fillcolor="#C6EFCE"];
+  f0_End [label="End" shape=doublecircle width=0.4 fontsize=9 style=filled fillcolor="#D9D9D9"];
+  f0_1 -> f0_2 [color="#404040" fontcolor="#404040"];
+  f0_2 -> f0_3 [color="#2E7D32" fontcolor="#2E7D32" label=" T"];
+  f0_2 -> f0_4 [color="#C62828" fontcolor="#C62828" label=" F"];
+  f0_3 -> f0_5 [color="#404040" fontcolor="#404040"];
+  f0_4 -> f0_5 [color="#404040" fontcolor="#404040"];
+  f0_5 -> f0_End [color="#404040" fontcolor="#404040"];
+}
+subgraph cluster_1 { style="rounded" color="#7F7F7F" fontsize=12 label="createIngredient  (lines 67-73)\nV(G) = P + 1 = 3   E - N + 2 = 7 - 6 + 2 = 3";
+  f1_1 [label="1: receive admin, @Valid\nrequest\n(line 67-68)" shape=box style="rounded,filled" fillcolor="#DDEBF7"];
+  f1_2 [label="2: request.name() != null ?\n(line 69)" shape=diamond style=filled fillcolor="#FFF2CC"];
+  f1_3 [label="3: name.strip().length() >= 80\n?\n(line 69)" shape=diamond style=filled fillcolor="#FFF2CC"];
+  f1_4 [label="4: throw\nApiException.validation(name)\n(line 70)" shape=box style="rounded,filled" fillcolor="#F8CBAD"];
+  f1_5 [label="5: return\nResponseEntity.ok(catalog.createIngredient(request,\nadmin.id()))\n(line 72)" shape=box style="rounded,filled" fillcolor="#C6EFCE"];
+  f1_End [label="End" shape=doublecircle width=0.4 fontsize=9 style=filled fillcolor="#D9D9D9"];
+  f1_1 -> f1_2 [color="#404040" fontcolor="#404040"];
+  f1_2 -> f1_3 [color="#2E7D32" fontcolor="#2E7D32" label=" T"];
+  f1_2 -> f1_5 [color="#C62828" fontcolor="#C62828" label=" F"];
+  f1_3 -> f1_4 [color="#2E7D32" fontcolor="#2E7D32" label=" T"];
+  f1_3 -> f1_5 [color="#C62828" fontcolor="#C62828" label=" F"];
+  f1_4 -> f1_End [color="#404040" fontcolor="#404040"];
+  f1_5 -> f1_End [color="#404040" fontcolor="#404040"];
+}
+subgraph cluster_2 { style="rounded" color="#7F7F7F" fontsize=12 label="summary  (lines 137-140)\nV(G) = P + 1 = 2   E - N + 2 = 6 - 6 + 2 = 2";
+  f2_1 [label="1: receive from, to\n(line 137-138)" shape=box style="rounded,filled" fillcolor="#DDEBF7"];
+  f2_2 [label="2: to == null ?\n(line 139)" shape=diamond style=filled fillcolor="#FFF2CC"];
+  f2_3 [label="3: toArg = null\n(line 139)" shape=box style=filled fillcolor="#DDEBF7"];
+  f2_4 [label="4: toArg = to.minusDays(1)\n(line 139)" shape=box style=filled fillcolor="#DDEBF7"];
+  f2_5 [label="5: return\nanalytics.summary(from, toArg)\n(line 139)" shape=box style="rounded,filled" fillcolor="#C6EFCE"];
+  f2_End [label="End" shape=doublecircle width=0.4 fontsize=9 style=filled fillcolor="#D9D9D9"];
+  f2_1 -> f2_2 [color="#404040" fontcolor="#404040"];
+  f2_2 -> f2_3 [color="#2E7D32" fontcolor="#2E7D32" label=" T"];
+  f2_2 -> f2_4 [color="#C62828" fontcolor="#C62828" label=" F"];
+  f2_3 -> f2_5 [color="#404040" fontcolor="#404040"];
+  f2_4 -> f2_5 [color="#404040" fontcolor="#404040"];
+  f2_5 -> f2_End [color="#404040" fontcolor="#404040"];
+}
+subgraph cluster_3 { style="rounded" color="#7F7F7F" fontsize=12 label="auditLogs  (lines 155-158)\nV(G) = P + 1 = 2   E - N + 2 = 6 - 6 + 2 = 2";
+  f3_1 [label="1: receive page, size\n(line 155-156)" shape=box style="rounded,filled" fillcolor="#DDEBF7"];
+  f3_2 [label="2: page == null ?\n(line 157)" shape=diamond style=filled fillcolor="#FFF2CC"];
+  f3_3 [label="3: pageArg = 1\n(line 157)" shape=box style=filled fillcolor="#DDEBF7"];
+  f3_4 [label="4: pageArg = page + 1\n(line 157)" shape=box style=filled fillcolor="#DDEBF7"];
+  f3_5 [label="5: return audit.list(pageArg,\nsize)\n(line 157)" shape=box style="rounded,filled" fillcolor="#C6EFCE"];
+  f3_End [label="End" shape=doublecircle width=0.4 fontsize=9 style=filled fillcolor="#D9D9D9"];
+  f3_1 -> f3_2 [color="#404040" fontcolor="#404040"];
+  f3_2 -> f3_3 [color="#2E7D32" fontcolor="#2E7D32" label=" T"];
+  f3_2 -> f3_4 [color="#C62828" fontcolor="#C62828" label=" F"];
+  f3_3 -> f3_5 [color="#404040" fontcolor="#404040"];
+  f3_4 -> f3_5 [color="#404040" fontcolor="#404040"];
+  f3_5 -> f3_End [color="#404040" fontcolor="#404040"];
+}
+subgraph cluster_4 { style="rounded" color="#7F7F7F" fontsize=12 label="updateStatus  (lines 119-124)\nV(G) = P + 1 = 1   E - N + 2 = 3 - 4 + 2 = 1";
+  f4_1 [label="1: receive admin, userId,\n@Valid request\n(line 119-120)" shape=box style="rounded,filled" fillcolor="#DDEBF7"];
+  f4_2 [label="2: row =\nusers.updateStatus(admin,\nuserId, request)\n(line 121)" shape=box style=filled fillcolor="#DDEBF7"];
+  f4_3 [label="3: return new\nAdminUserRow(...,\nrow.reviewCount(),\nrow.recipeCount(), ...)\n(line 122-123)" shape=box style="rounded,filled" fillcolor="#C6EFCE"];
+  f4_End [label="End" shape=doublecircle width=0.4 fontsize=9 style=filled fillcolor="#D9D9D9"];
+  f4_1 -> f4_2 [color="#404040" fontcolor="#404040"];
+  f4_2 -> f4_3 [color="#404040" fontcolor="#404040"];
+  f4_3 -> f4_End [color="#404040" fontcolor="#404040"];
+}
+}
