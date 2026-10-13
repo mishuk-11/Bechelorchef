@@ -140,6 +140,30 @@ export interface Ingredient {
   active: boolean;
 }
 
+export type IngredientImportStatus = "NEW" | "CREATED" | "EXISTS" | "DUPLICATE" | "INVALID";
+
+export interface IngredientImportRow {
+  rowNumber: number;
+  name: string | null;
+  category: string | null;
+  defaultUnit: string | null;
+  status: IngredientImportStatus;
+  message: string;
+}
+
+/** newCount = rows that would be added (preview) or were added (import). */
+export interface IngredientImportResult {
+  filename: string;
+  fileType: "CSV" | "JSON";
+  dryRun: boolean;
+  totalRows: number;
+  newCount: number;
+  existingCount: number;
+  duplicateCount: number;
+  invalidCount: number;
+  rows: IngredientImportRow[];
+}
+
 export interface MatchRequest {
   ingredientIds: number[];
   maxTotalTimeMins: number;

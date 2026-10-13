@@ -1,12 +1,13 @@
 "use client";
 
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { Plus } from "lucide-react";
+import { Plus, Upload } from "lucide-react";
 import { useState, type FormEvent } from "react";
 import { Button } from "@/components/ui/button";
 import { Badge, Modal, Pagination, TableWrap } from "@/components/ui/display";
 import { Field, Input, Select } from "@/components/ui/field";
 import { EmptyState, ErrorState, LoadingBlock } from "@/components/ui/states";
+import { IngredientBulkImport } from "@/features/admin/ingredient-import";
 import { useToast } from "@/components/ui/toast";
 import { ApiError, errorMessage } from "@/lib/api/client";
 import { adminApi } from "@/lib/api/endpoints";
@@ -59,6 +60,7 @@ export default function AdminIngredientsPage() {
   const [category, setCategory] = useState("");
   const [page, setPage] = useState(0);
   const [editing, setEditing] = useState<Ingredient | "new" | null>(null);
+  const [bulkOpen, setBulkOpen] = useState(false);
   const categories = useQuery({ queryKey: ["admin", "ingredient-categories"], queryFn: adminApi.categories });
   const list = useQuery({
     queryKey: ["admin", "ingredients", query, category, page],
@@ -81,8 +83,13 @@ export default function AdminIngredientsPage() {
     <div className="flex flex-col gap-5">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <h1 className="text-2xl font-bold">Ingredient catalogue</h1>
-        <Button onClick={() => setEditing("new")} icon={<Plus aria-hidden className="h-4 w-4" />}>Add ingredient</Button>
+        <div className="flex flex-wrap gap-2">
+          <Button variant="secondary" onClick={() => setBulkOpen((o) => !o)} aria-expanded={bulkOpen}
+            icon={<Upload aria-hidden className="h-4 w-4" />} data-testid="bulk-ingredients-toggle">Bulk add (CSV / JSON)</Button>
+          <Button onClick={() => setEditing("new")} icon={<Plus aria-hidden className="h-4 w-4" />}>Add ingredient</Button>
+        </div>
       </div>
+      {bulkOpen && <IngredientBulkImport onClose={() => setBulkOpen(false)} />}
       <div className="flex flex-wrap gap-3">
         <form onSubmit={search} role="search" className="flex gap-2">
           <label htmlFor="ing-search" className="sr-only">Search ingredients</label>

@@ -13,6 +13,7 @@ import type {
   ImportJobDetail,
   ImportPreview,
   Ingredient,
+  IngredientImportResult,
   IngredientAnalytics,
   MatchRequest,
   MatchResponse,
@@ -149,6 +150,16 @@ export const adminApi = {
     apiRequest<Ingredient>(`/admin/ingredients/${id}`, { method: "PATCH", body }),
   setIngredientActive: (id: number, active: boolean) =>
     apiRequest<Ingredient>(`/admin/ingredients/${id}/${active ? "activate" : "deactivate"}`, { method: "POST" }),
+  previewIngredientImport: (file: File) => {
+    const form = new FormData();
+    form.append("file", file);
+    return apiRequest<IngredientImportResult>("/admin/ingredients/import/preview", { method: "POST", form });
+  },
+  importIngredients: (file: File) => {
+    const form = new FormData();
+    form.append("file", file);
+    return apiRequest<IngredientImportResult>("/admin/ingredients/import", { method: "POST", form });
+  },
   createTag: (name: string) => apiRequest<Tag>("/admin/tags", { method: "POST", body: { name } }),
 
   users: (params: { q?: string; status?: string; role?: string; page?: number }) =>

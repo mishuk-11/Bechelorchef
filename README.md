@@ -110,6 +110,7 @@ docker compose down -v && docker compose up -d db   # deletes the local volume �
 - [docs/api.md](docs/api.md) — endpoints, error format, status transitions, import formats
 - [docs/testing.md](docs/testing.md) — test strategy, BVA, ECT, decision tables, basis paths, how to run
 - [docs/deployment.md](docs/deployment.md) — Vercel + Render (Docker) + managed PostgreSQL
+- [docs/deploy-free.md](docs/deploy-free.md) — step-by-step **free** hosting: Vercel + Render (`render.yaml`) + Neon
 - [database/README.md](database/README.md) — migrations, seed data, backups
 - [e2e/README.md](e2e/README.md) — Selenium setup
 - [CHECKLIST.md](CHECKLIST.md) — implementation checklist and status

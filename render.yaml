@@ -1,0 +1,51 @@
+# Render Blueprint: the Spring Boot API as a free Docker web service.
+# Render → New → Blueprint → pick this repository. Values marked `sync: false` are asked for once in the dashboard.
+# The web app goes on Vercel and the database on Neon; see docs/deploy-free.md.
+services:
+  - type: web
+    name: bachelor-chef-api
+    runtime: docker
+    plan: free
+    region: singapore                      # closest Render region to Bangladesh
+    dockerfilePath: ./backend/Dockerfile
+    dockerContext: ./backend
+    healthCheckPath: /actuator/health/readiness
+    autoDeploy: true
+    buildFilter:
+      paths:
+        - backend/**                       # frontend/docs changes do not rebuild the API
+    envVars:
+      - key: SPRING_PROFILES_ACTIVE
+        value: prod
+      # Neon: use the DIRECT (non-pooled) host, e.g.
+      # jdbc:postgresql://ep-xxx.ap-southeast-1.aws.neon.tech/neondb?sslmode=require
+      - key: SPRING_DATASOURCE_URL
+        sync: false
+      - key: SPRING_DATASOURCE_USERNAME
+        sync: false
+      - key: SPRING_DATASOURCE_PASSWORD
+        sync: false
+      - key: APP_JWT_ACCESS_SECRET
+        generateValue: true                # random 256-bit value made by Render
+      # Exact Vercel URL(s), comma-separated, no wildcards, e.g. https://bechelorchef.vercel.app
+      - key: APP_FRONTEND_ORIGINS
+        sync: false
+      - key: APP_COOKIE_SECURE
+        value: "true"
+      - key: APP_COOKIE_SAME_SITE
+        value: Lax
+      # First admin. Created once if the email does not exist; remove both after the first successful start.
+      - key: BOOTSTRAP_ADMIN_EMAIL
+        sync: false
+      - key: BOOTSTRAP_ADMIN_PASSWORD      # at least 12 characters
+        sync: false
+      # Demo only: also load the 12 sample recipes (flagged is_sample). Delete this line for a real production site.
+      - key: SPRING_FLYWAY_LOCATIONS
+        value: classpath:db/migration,classpath:db/devseed
+      # Small-instance tuning (512 MB RAM, shared CPU) and a small connection pool for the free database.
+      - key: DB_POOL_SIZE
+        value: "4"
+      - key: SERVER_TOMCAT_THREADS_MAX
+        value: "40"
+      # Optional image uploads: add CLOUDINARY_CLOUD_NAME / CLOUDINARY_API_KEY / CLOUDINARY_API_SECRET later in
+      # Render → Environment. Without them, users paste https image links from the allowed hosts.

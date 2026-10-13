@@ -3,6 +3,8 @@
 Recommended low-cost setup: **frontend on Vercel**, **API as a Docker web service on Render** (or Railway/Fly.io), **managed PostgreSQL** (Render, Neon, Supabase…), **Cloudinary** for images.
 Do not run the Spring Boot JVM as a Vercel Function.
 
+**Free, click-by-click version:** [deploy-free.md](deploy-free.md) (uses the Render Blueprint in [`render.yaml`](../render.yaml) and Neon).
+
 > Not verified in this repository: no deployment was performed and the Docker image was not built here (Docker was unavailable on the development machine). The steps below follow the platforms' documented behaviour; run the production checklist after your first deploy.
 
 ## 1. Database

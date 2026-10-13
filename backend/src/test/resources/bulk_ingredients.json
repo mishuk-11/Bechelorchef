@@ -1,0 +1,10 @@
+[
+  { "name": "Red Lentils", "category": "Legumes", "default_unit": "cup" },
+  { "name": "Chickpeas", "category": "Legumes", "default_unit": "cup" },
+  { "name": "Paneer", "category": "Dairy", "default_unit": "g" },
+  { "name": "Chili, dried", "category": "Spices", "default_unit": "pcs" },
+  { "name": "Coriander Leaves", "category": "Vegetables", "default_unit": "bunch" },
+  { "name": "Mustard Oil", "category": "Pantry", "default_unit": "tbsp" },
+  { "name": "Puffed Rice (Muri)", "category": "Grains", "default_unit": "cup" },
+  { "name": "Tamarind", "category": "Spices", "default_unit": "g" }
+]

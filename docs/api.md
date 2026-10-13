@@ -96,6 +96,7 @@ Legend: 🌐 public · 👤 signed in · 🛡 admin
 | GET / POST / PATCH | `/admin/ingredients`, `/admin/ingredients/{id}` | Includes inactive; unique normalised names (409 on duplicates). |
 | POST | `/admin/ingredients/{id}/activate` · `/deactivate` | Inactive ingredients stay on existing recipes but cannot be newly added. |
 | GET | `/admin/ingredients/categories` | |
+| POST | `/admin/ingredients/import/preview` · `/admin/ingredients/import` | Bulk add ingredients from a CSV/JSON file (multipart `file`). Preview writes nothing; import adds the NEW rows and skips existing names, duplicates and invalid rows. See [Bulk ingredient format](#bulk-ingredient-format). |
 | POST / PATCH | `/admin/tags`, `/admin/tags/{id}` | |
 | GET | `/admin/users?q=&status=&role=` | With recipe/review/cook counts; no credentials. |
 | PATCH | `/admin/users/{id}/status` · `/role` | Not on yourself; last active admin cannot be suspended. Audited. |
@@ -162,3 +163,33 @@ Quick Egg Noodles,3,10,EASY,60.00,Noodles:1:pack|Egg:1:pcs|Green Chili:2:pcs,Boi
 
 A top-level array of objects with keys `title, description, prep_time_mins, cook_time_mins, difficulty_level, estimated_cost_bdt, base_servings, image_url, tags[], ingredients[{name, quantity, unit, is_optional}], steps[{step_number, instruction_text, image_url}]`.
 Unknown keys are row errors; `is_official`, `status`, `created_by`, `approved_by`, … are rejected; `total_time_mins` is ignored with a warning. Steps are ordered by `step_number` (all or none must have one) and renumbered 1..n.
+
+## Bulk ingredient format
+
+Admin → Ingredients → **Bulk add (CSV / JSON)**, or `POST /admin/ingredients/import/preview` then `POST /admin/ingredients/import` with the same file (multipart field `file`). Max 500 rows and 5 MB; UTF-8.
+
+**CSV**: a header line is required. Columns: `name` (required), `category`, `default_unit` (optional, any order). Quote values that contain commas.
+
+```csv
+name,category,default_unit
+Red Lentils,Legumes,cup
+"Chili, dried",Spices,pcs
+```
+
+**JSON**: an array of objects with `name`, `category`, `default_unit` (`defaultUnit` also accepted). Values must be text or null. Unknown keys make that row invalid.
+
+```json
+[{ "name": "Paneer", "category": "Dairy", "default_unit": "g" }]
+```
+
+**Rules**: name 1–80, category up to 40 and default unit up to 20 characters (the same rules as the single "Add ingredient" form). Each row gets one result:
+
+| Result | Meaning |
+|---|---|
+| `NEW` | Preview only: would be added |
+| `CREATED` | Import only: added (audited as `INGREDIENT_CREATED`) |
+| `EXISTS` | The name (ignoring case and spacing) is already in the catalogue, active or not, so the row is skipped |
+| `DUPLICATE` | Same name as an earlier row of the file, so the row is skipped |
+| `INVALID` | Missing or too-long values, wrong type or unknown field; the reason is given |
+
+Uploading the same file twice adds nothing the second time. File-level errors (400): `EMPTY_FILE`, `BAD_HEADER`, `NOT_AN_ARRAY`, `MALFORMED_FILE`, `NO_ROWS`, `TOO_MANY_ROWS`. Unsupported type: 415. Larger than 5 MB: 413. One `INGREDIENTS_IMPORTED` audit entry summarises each import. Sample files: `backend/src/test/resources/bulk_ingredients.csv` / `.json`.
