@@ -10,6 +10,7 @@ import { useToast } from "@/components/ui/toast";
 import { apiDownload, errorMessage } from "@/lib/api/client";
 import { adminApi } from "@/lib/api/endpoints";
 import { formatDate } from "@/lib/format";
+import { RecipeImportGuide } from "@/features/admin/import-guides";
 import { ALLOWED_IMPORT_MAX_BYTES } from "@/schemas";
 import type { ImportIssue, ImportJobDetail, ImportPreview, ImportStatus } from "@/types/api";
 
@@ -96,15 +97,8 @@ function Uploader() {
     <div className="flex flex-col gap-4">
       <Card className="flex flex-col gap-4">
         <h2 className="text-lg font-semibold">1. Upload a CSV or JSON file</h2>
-        <p className="text-sm text-muted">Up to 500 recipes and 5 MB per file. Nothing is saved until you confirm the preview. Imported recipes are published as official.</p>
-        <details className="text-sm">
-          <summary className="cursor-pointer font-medium text-brand">File format</summary>
-          <div className="mt-2 flex flex-col gap-2 text-muted">
-            <p>CSV header (required): <code className="font-mono text-xs">title,prep_time_mins,cook_time_mins,difficulty_level,estimated_cost_bdt,ingredients_csv,instructions_pipe</code>. Optional: <code className="font-mono text-xs">description, base_servings, image_url, tags_pipe</code>.</p>
-            <p><code className="font-mono text-xs">ingredients_csv</code> = <code className="font-mono text-xs">Name:quantity:unit[:optional]</code> items separated by <code>|</code>; <code className="font-mono text-xs">instructions_pipe</code> = steps separated by <code>|</code>. Write a literal pipe as <code>\|</code> and a colon as <code>\:</code>.</p>
-            <p>JSON: an array of recipe objects with the same snake_case keys plus <code>ingredients</code> and <code>steps</code> arrays. <code>total_time_mins</code> is ignored (always prep + cook).</p>
-          </div>
-        </details>
+        <p className="text-sm text-muted">Up to 500 recipes and 5 MB per file. <strong className="text-ink">Each recipe must take 60 minutes or less in total (prep + cook).</strong> Nothing is saved until you confirm the preview. Imported recipes are published as official.</p>
+        <RecipeImportGuide />
         <div className="flex flex-wrap items-center gap-3">
           <label htmlFor="import-file" className="inline-flex h-10 cursor-pointer items-center gap-2 rounded-lg border border-line bg-surface px-4 text-sm font-medium hover:bg-sunken">
             <FileUp aria-hidden className="h-4 w-4" /> Choose file

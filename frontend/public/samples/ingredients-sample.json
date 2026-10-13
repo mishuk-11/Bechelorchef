@@ -1,0 +1,7 @@
+[
+  { "name": "Red Lentils", "category": "Legumes", "default_unit": "cup" },
+  { "name": "Chili, dried", "category": "Spices", "default_unit": "pcs" },
+  { "name": "Paneer", "category": "Dairy", "default_unit": "g" },
+  { "name": "Tamarind", "category": "Spices", "default_unit": "g" },
+  { "name": "Bay Leaf", "category": "Spices", "default_unit": "pcs" }
+]

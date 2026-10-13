@@ -1,0 +1,78 @@
+[
+  {
+    "title": "Egg Bhurji Toast",
+    "description": "Spicy scrambled eggs on crispy toast",
+    "prep_time_mins": 5,
+    "cook_time_mins": 8,
+    "difficulty_level": "EASY",
+    "estimated_cost_bdt": 70.00,
+    "base_servings": 2,
+    "tags": ["Breakfast", "Egg", "Quick"],
+    "ingredients": [
+      { "name": "Egg", "quantity": 3, "unit": "pcs" },
+      { "name": "Onion", "quantity": 1, "unit": "pcs" },
+      { "name": "Green Chili", "quantity": 2, "unit": "pcs" },
+      { "name": "Bread", "quantity": 4, "unit": "slice" },
+      { "name": "Oil", "quantity": 1, "unit": "tbsp" },
+      { "name": "Salt", "quantity": 0.5, "unit": "tsp" },
+      { "name": "Coriander Leaves", "quantity": 1, "unit": "tbsp", "is_optional": true }
+    ],
+    "steps": [
+      { "step_number": 1, "instruction_text": "Chop the onion and green chili" },
+      { "step_number": 2, "instruction_text": "Heat the oil and fry the onion for 2 minutes" },
+      { "step_number": 3, "instruction_text": "Add the eggs and salt and stir until set" },
+      { "step_number": 4, "instruction_text": "Toast the bread and top it with the eggs" }
+    ]
+  },
+  {
+    "title": "Chira Poha, Bangladeshi style",
+    "description": "Soft flattened rice with potato and peanuts",
+    "prep_time_mins": 5,
+    "cook_time_mins": 10,
+    "difficulty_level": "EASY",
+    "estimated_cost_bdt": 50.00,
+    "base_servings": 2,
+    "tags": ["Breakfast", "Bangladeshi", "Vegetarian"],
+    "ingredients": [
+      { "name": "Flattened Rice (Chira)", "quantity": 2, "unit": "cup" },
+      { "name": "Onion", "quantity": 1, "unit": "pcs" },
+      { "name": "Potato", "quantity": 1, "unit": "pcs" },
+      { "name": "Turmeric Powder", "quantity": 0.5, "unit": "tsp" },
+      { "name": "Peanuts", "quantity": 2, "unit": "tbsp", "is_optional": true },
+      { "name": "Oil", "quantity": 1, "unit": "tbsp" },
+      { "name": "Salt", "quantity": 0.5, "unit": "tsp" },
+      { "name": "Lemon", "quantity": 0.5, "unit": "pcs" }
+    ],
+    "steps": [
+      { "step_number": 1, "instruction_text": "Rinse the chira and drain it" },
+      { "step_number": 2, "instruction_text": "Fry the onion and diced potato until soft" },
+      { "step_number": 3, "instruction_text": "Add turmeric and salt then the chira" },
+      { "step_number": 4, "instruction_text": "Mix gently for 3 minutes and squeeze lemon on top" }
+    ]
+  },
+  {
+    "title": "Spinach Garlic Pasta",
+    "description": "Buttery pasta with spinach and garlic",
+    "prep_time_mins": 5,
+    "cook_time_mins": 12,
+    "difficulty_level": "MEDIUM",
+    "estimated_cost_bdt": 120.00,
+    "base_servings": 2,
+    "tags": ["Dinner", "Vegetarian"],
+    "ingredients": [
+      { "name": "Pasta", "quantity": 200, "unit": "g" },
+      { "name": "Spinach", "quantity": 1, "unit": "cup" },
+      { "name": "Garlic", "quantity": 4, "unit": "pcs" },
+      { "name": "Butter", "quantity": 1, "unit": "tbsp" },
+      { "name": "Cheese", "quantity": 2, "unit": "slice", "is_optional": true },
+      { "name": "Salt", "quantity": 0.5, "unit": "tsp" },
+      { "name": "Black Pepper", "quantity": 0.25, "unit": "tsp" }
+    ],
+    "steps": [
+      { "step_number": 1, "instruction_text": "Boil the pasta in salted water for 10 minutes" },
+      { "step_number": 2, "instruction_text": "Melt the butter and fry the sliced garlic" },
+      { "step_number": 3, "instruction_text": "Add the spinach until it wilts" },
+      { "step_number": 4, "instruction_text": "Mix in the pasta and season with pepper" }
+    ]
+  }
+]

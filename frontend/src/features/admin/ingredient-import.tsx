@@ -1,7 +1,7 @@
 "use client";
 
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { Download, FileUp, X } from "lucide-react";
+import { FileUp, X } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Badge, Card, StatTile, TableWrap } from "@/components/ui/display";
@@ -9,26 +9,9 @@ import { Alert } from "@/components/ui/states";
 import { useToast } from "@/components/ui/toast";
 import { errorMessage } from "@/lib/api/client";
 import { adminApi } from "@/lib/api/endpoints";
+import { IngredientImportGuide } from "@/features/admin/import-guides";
 import { ALLOWED_IMPORT_MAX_BYTES } from "@/schemas";
 import type { IngredientImportResult, IngredientImportStatus } from "@/types/api";
-
-const SAMPLE_CSV = `name,category,default_unit
-Red Lentils,Legumes,cup
-"Chili, dried",Spices,pcs
-Paneer,Dairy,g
-Tamarind,Spices,g
-`;
-
-const SAMPLE_JSON = `${JSON.stringify(
-  [
-    { name: "Red Lentils", category: "Legumes", default_unit: "cup" },
-    { name: "Chili, dried", category: "Spices", default_unit: "pcs" },
-    { name: "Paneer", category: "Dairy", default_unit: "g" },
-    { name: "Tamarind", category: "Spices", default_unit: "g" },
-  ],
-  null,
-  2,
-)}\n`;
 
 const STATUS: Record<IngredientImportStatus, { label: string; tone: "herb" | "neutral" | "saffron" | "danger" }> = {
   NEW: { label: "Will be added", tone: "herb" },
@@ -38,14 +21,6 @@ const STATUS: Record<IngredientImportStatus, { label: string; tone: "herb" | "ne
   INVALID: { label: "Invalid", tone: "danger" },
 };
 
-function downloadSample(filename: string, content: string, type: string) {
-  const url = URL.createObjectURL(new Blob([content], { type }));
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = filename;
-  a.click();
-  URL.revokeObjectURL(url);
-}
 
 const plural = (n: number, word: string) => `${n} ${word}${n === 1 ? "" : "s"}`;
 
@@ -97,24 +72,7 @@ export function IngredientBulkImport({ onClose }: { onClose: () => void }) {
         </button>
       </div>
 
-      <details className="text-sm">
-        <summary className="cursor-pointer font-medium text-brand">File format and samples</summary>
-        <div className="mt-2 flex flex-col gap-2 text-muted">
-          <p>
-            <strong>CSV:</strong> first line is the header <code className="font-mono text-xs">name,category,default_unit</code>. Only <code>name</code> is required; columns may be in any order. Put a value with a comma in quotes, e.g. <code className="font-mono text-xs">&quot;Chili, dried&quot;</code>.
-          </p>
-          <p>
-            <strong>JSON:</strong> an array of objects, e.g. <code className="font-mono text-xs">[{"{"}&quot;name&quot;: &quot;Paneer&quot;, &quot;category&quot;: &quot;Dairy&quot;, &quot;default_unit&quot;: &quot;g&quot;{"}"}]</code>.
-          </p>
-          <p>Limits: name 1–80, category up to 40, default unit up to 20 characters. Names are unique ignoring case and spacing.</p>
-          <div className="flex flex-wrap gap-2">
-            <Button size="sm" variant="secondary" icon={<Download aria-hidden className="h-4 w-4" />}
-              onClick={() => downloadSample("ingredients-sample.csv", SAMPLE_CSV, "text/csv")}>Sample CSV</Button>
-            <Button size="sm" variant="secondary" icon={<Download aria-hidden className="h-4 w-4" />}
-              onClick={() => downloadSample("ingredients-sample.json", SAMPLE_JSON, "application/json")}>Sample JSON</Button>
-          </div>
-        </div>
-      </details>
+      <IngredientImportGuide />
 
       <div className="flex flex-wrap items-center gap-3">
         <label htmlFor="bulk-ingredients-file" className="inline-flex h-10 cursor-pointer items-center gap-2 rounded-lg border border-line bg-surface px-4 text-sm font-medium hover:bg-sunken">
