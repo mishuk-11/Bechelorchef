@@ -47,3 +47,49 @@ dialog::backdrop {
     transition: none !important;
   }
 }
+
+/* ---------- Easter eggs (features/easter-eggs.tsx) ---------- */
+.egg-bike {
+  right: 0;
+  animation: egg-ride 3.4s cubic-bezier(0.45, 0.05, 0.55, 0.95) forwards;
+}
+.egg-bike-rider {
+  animation: egg-bounce 0.35s ease-in-out infinite alternate;
+}
+@keyframes egg-ride {
+  from { transform: translateX(110%); }
+  to { transform: translateX(calc(-100vw - 110%)); }
+}
+@keyframes egg-bounce {
+  from { transform: translateY(0) rotate(-2deg); }
+  to { transform: translateY(-6px) rotate(2deg); }
+}
+
+.egg-cherry {
+  animation-name: egg-fall;
+  animation-timing-function: cubic-bezier(0.35, 0, 0.65, 1);
+  animation-fill-mode: both;
+}
+@keyframes egg-fall {
+  from { transform: translateY(0) rotate(0deg); opacity: 1; }
+  85% { opacity: 1; }
+  to { transform: translateY(calc(100vh + 6rem)) rotate(var(--egg-spin, 360deg)); opacity: 0; }
+}
+
+.egg-credits-backdrop {
+  animation: egg-fade 12.4s ease forwards;
+}
+.egg-credits {
+  top: 100%;
+  animation: egg-roll 12s linear forwards;
+}
+@keyframes egg-roll {
+  from { transform: translateY(0); }
+  to { transform: translateY(calc(-100vh - 100%)); }
+}
+@keyframes egg-fade {
+  0% { opacity: 0; }
+  8% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { opacity: 0; }
+}

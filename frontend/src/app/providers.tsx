@@ -4,6 +4,7 @@ import { QueryClient, QueryClientProvider, useQueryClient } from "@tanstack/reac
 import { useEffect, useRef, type ReactNode } from "react";
 import { ToastProvider } from "@/components/ui/toast";
 import { AuthProvider } from "@/features/auth/auth-provider";
+import { EasterEggs } from "@/features/easter-eggs";
 import { ApiError, onSessionChange } from "@/lib/api/client";
 
 let browserQueryClient: QueryClient | undefined;
@@ -51,6 +52,7 @@ export function Providers({ children }: { children: ReactNode }) {
       <ClearCacheOnUserChange />
       <ToastProvider>
         <AuthProvider>{children}</AuthProvider>
+        <EasterEggs />
       </ToastProvider>
     </QueryClientProvider>
   );
