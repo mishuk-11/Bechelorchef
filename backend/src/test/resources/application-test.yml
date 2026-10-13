@@ -1,0 +1,22 @@
+spring:
+  flyway:
+    locations: classpath:db/migration
+  jpa:
+    open-in-view: false
+
+app:
+  frontend-origins: http://localhost:3000
+  auth:
+    jwt-secret: test-only-secret-0123456789abcdef0123456789abcdef
+  bootstrap:
+    admin-email: ""
+    admin-password: ""
+  rate-limit:
+    enabled: false
+  media:
+    allowed-image-hosts: res.cloudinary.com,images.example.com
+
+logging:
+  level:
+    root: WARN
+    com.bachelorchef: INFO

@@ -1,0 +1,5 @@
+title,prep_time_mins,cook_time_mins,difficulty_level,estimated_cost_bdt,ingredients_csv,instructions_pipe,description,base_servings,tags_pipe
+Quick Egg Noodles Deluxe,3,10,EASY,60.00,Noodles:1:pack|Egg:1:pcs|Green Chili:2:pcs,Boil noodles for 3 mins|Scramble egg in a pan|Mix noodles with spices,"Noodles, egg and chili — ready fast",1,Quick|Noodles
+Masala Oats Bowl,2,8,EASY,45.00,Oats:1:cup|Water:2:cup|Onion:1:pcs,Chop onion and fry|Add water and oats|Cook for 5 mins,Warm breakfast,1,Breakfast
+"Chili, Garlic & Egg Toast",5,6,EASY,40.00,Bread:2:slice|Egg:1:pcs|Garlic:1:clove|Chili Powder:0.25:tsp:optional,"Toast the bread|Fry egg with garlic, chili|Assemble",Uses a quoted title with a comma,1,Snack
+Lentil Soup Express,5,15,MEDIUM,55.50,Red Lentils (Masoor Dal):0.5:cup|Water:2:cup|Salt:0.5:tsp,Boil lentils|Season and serve,Pipe in text: 1\|2 cups,2,Dinner|Budget

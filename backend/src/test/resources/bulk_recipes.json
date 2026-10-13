@@ -1,0 +1,35 @@
+[
+  {
+    "title": "Quick Egg Fried Rice Import",
+    "description": "A quick meal using leftover rice.",
+    "prep_time_mins": 5,
+    "cook_time_mins": 10,
+    "difficulty_level": "EASY",
+    "estimated_cost_bdt": 80.00,
+    "base_servings": 2,
+    "image_url": null,
+    "tags": ["Quick", "Rice"],
+    "ingredients": [
+      { "name": "Cooked Rice", "quantity": 2, "unit": "cups", "is_optional": false },
+      { "name": "Egg", "quantity": 2, "unit": "pcs", "is_optional": false },
+      { "name": "Soy Sauce", "quantity": 1, "unit": "tbsp", "is_optional": true }
+    ],
+    "steps": [
+      { "step_number": 2, "instruction_text": "Add the ingredients and cook thoroughly.", "image_url": null },
+      { "step_number": 1, "instruction_text": "Heat oil in a pan.", "image_url": null }
+    ]
+  },
+  {
+    "title": "Banana Milk Shake Import",
+    "prep_time_mins": 5,
+    "cook_time_mins": 1,
+    "difficulty_level": "easy",
+    "estimated_cost_bdt": 50,
+    "total_time_mins": 999,
+    "ingredients": [
+      { "name": "Banana", "quantity": 1, "unit": "pcs" },
+      { "name": "Milk", "quantity": 1, "unit": "cup" }
+    ],
+    "steps": [ { "instruction_text": "Blend and serve." } ]
+  }
+]

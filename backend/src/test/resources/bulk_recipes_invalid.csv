@@ -1,0 +1,8 @@
+title,prep_time_mins,cook_time_mins,difficulty_level,estimated_cost_bdt,ingredients_csv,instructions_pipe
+Valid Row Toast,2,5,EASY,30.00,Bread:2:slice|Butter:1:tbsp,Butter the bread|Toast it
+Too Long Stew,10,60,EASY,90.00,Potato:2:pcs,Boil|Simmer
+Bad Number Rice,abc,10,EASY,50.00,Rice:1:cup,Cook rice
+Empty Ingredient Curry,5,10,EASY,70.00,Egg:2:pcs||Onion:1:pcs,Fry|Simmer
+Empty Step Salad,5,1,EASY,40.00,Cucumber:1:pcs,Chop||Serve
+Bad Difficulty Snack,5,5,EXTREME,20.00,Peanuts:2:tbsp,Roast
+Malformed Item Dish,5,5,EASY,20.00,Egg-2-pcs,Cook

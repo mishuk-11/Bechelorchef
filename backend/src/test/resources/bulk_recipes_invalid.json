@@ -1,0 +1,14 @@
+[
+  { "title": "Good One", "prep_time_mins": 2, "cook_time_mins": 3, "difficulty_level": "EASY", "estimated_cost_bdt": 10,
+    "ingredients": [ { "name": "Egg", "quantity": 1, "unit": "pcs" } ], "steps": [ { "instruction_text": "Cook." } ] },
+  { "title": "String Time", "prep_time_mins": "5", "cook_time_mins": 3, "difficulty_level": "EASY", "estimated_cost_bdt": 10,
+    "ingredients": [ { "name": "Egg", "quantity": 1, "unit": "pcs" } ], "steps": [ { "instruction_text": "Cook." } ] },
+  { "title": "Sneaky Official", "is_official": true, "status": "APPROVED", "prep_time_mins": 2, "cook_time_mins": 3,
+    "difficulty_level": "EASY", "estimated_cost_bdt": 10,
+    "ingredients": [ { "name": "Egg", "quantity": 1, "unit": "pcs" } ], "steps": [ { "instruction_text": "Cook." } ] },
+  { "title": "Over Time", "prep_time_mins": 30, "cook_time_mins": 31, "difficulty_level": "EASY", "estimated_cost_bdt": 10,
+    "ingredients": [ { "name": "Egg", "quantity": 1, "unit": "pcs" } ], "steps": [ { "instruction_text": "Cook." } ] },
+  { "title": "No Steps", "prep_time_mins": 2, "cook_time_mins": 3, "difficulty_level": "EASY", "estimated_cost_bdt": 10,
+    "ingredients": [ { "name": "Egg", "quantity": 1, "unit": "pcs", "colour": "white" } ], "steps": [] },
+  "not an object"
+]
